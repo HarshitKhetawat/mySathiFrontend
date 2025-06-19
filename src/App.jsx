@@ -1,16 +1,14 @@
 // App.jsx
-import React, { useState } from 'react';
-import Header from './components/Header';
-import Banner from './components/Banner';
-import WelcomeSection from './components/WelcomeSection';
-import QuickHelp from './components/QuickHelp';
-import MainFeatures from './components/MainFeatures.jsx';
-import SecondaryFeatures from './components/SecondaryFeatures.jsx';
-import AdditionalFeatures from './components/AdditionalFeatures.jsx';
-import Footer from './components/Footer.jsx';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Banner from "./components/Banner";
+import QuickHelp from "./components/QuickHelp";
+import Footer from "./components/Footer.jsx";
+import Features from "./components/Features.jsx";
+import Slideshow from "./components/Slideshow.jsx";
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -20,30 +18,17 @@ const App = () => {
       {/* Banner Component */}
       <Banner />
 
+      {/* Slideshow Component */}
+      <Slideshow />
+      <br /><br />
       {/* Main Content Area */}
       <main className="p-4">
-        {/* Welcome Section Component */}
-        <WelcomeSection />
-
         {/* Quick Help Component */}
         <QuickHelp />
-
-        {/* Main Features Grid Component */}
-        <MainFeatures />
-
-        {/* Secondary Features Grid Component */}
-        <SecondaryFeatures />
-
-        {/* Additional Features Grid Component */}
-        <AdditionalFeatures />
-
+        {/* Main Features Component */}
+        <Features />
         {/* Footer Component */}
         <Footer />
-        
-        {/* Placeholder for remaining components */}
-        <div className="text-center text-gray-500 py-4">
-          <p>More components coming in next steps...</p>
-        </div>
       </main>
     </div>
   );

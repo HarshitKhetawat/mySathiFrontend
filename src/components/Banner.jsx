@@ -10,7 +10,7 @@ const Banner = () => {
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 transform rotate-12 translate-y-12 -translate-x-12"></div>
       </div>
       
-      <div className="relative z-10 flex items-center justify-center py-5 px-6">
+      <div className="relative z-10 flex items-center justify-center py-3 px-6">
         {/* Left icon */}
         <div className="hidden md:flex items-center justify-center w-10 h-10 bg-white/20 rounded-full mr-6">
           <Compass className="w-5 h-5 text-white animate-spin" style={{animationDuration: '8s'}} />
@@ -45,4 +45,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;  
+export default Banner;
