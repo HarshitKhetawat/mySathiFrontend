@@ -1,6 +1,8 @@
-import { Search, Calendar, FileText, ArrowUpRight } from 'lucide-react';
+// components/AdditionalFeatures.jsx
+import React from 'react';
+import { Briefcase, Coffee, HelpCircle, ArrowUpRight } from 'lucide-react';
 
-const FeatureCard = ({ icon: Icon, title1, title2, bgColor, iconColor, gradientFrom, gradientTo, customIcon, iconSrc }) => {
+const FeatureCard = ({ icon: Icon, title1, title2, bgColor, iconColor, gradientFrom, gradientTo, specialIcon, customIcon, iconSrc }) => {
   return (
     <button className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden">
       {/* Background gradient overlay */}
@@ -12,6 +14,8 @@ const FeatureCard = ({ icon: Icon, title1, title2, bgColor, iconColor, gradientF
         <div className={`relative w-16 h-16 bg-gradient-to-br ${gradientFrom} ${gradientTo} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
           {customIcon ? (
             <img src={iconSrc} alt={`${title1} ${title2}`} className="w-8 h-8 group-hover:scale-110 transition-transform duration-300" />
+          ) : specialIcon ? (
+            <span className="text-2xl group-hover:scale-110 transition-transform duration-300">{specialIcon}</span>
           ) : (
             <Icon className={`w-8 h-8 text-white`} />
           )}
@@ -27,9 +31,11 @@ const FeatureCard = ({ icon: Icon, title1, title2, bgColor, iconColor, gradientF
           <div className="text-base font-bold text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
             {title1}
           </div>
-          <div className="text-sm font-semibold text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
-            {title2}
-          </div>
+          {title2 && (
+            <div className="text-sm font-semibold text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+              {title2}
+            </div>
+          )}
         </div>
       </div>
       
@@ -39,51 +45,45 @@ const FeatureCard = ({ icon: Icon, title1, title2, bgColor, iconColor, gradientF
   );
 };
 
-const MainFeatures = () => {
+const AdditionalFeatures = () => {
   const features = [
     {
-      icon: Search,
-      title1: "Train",
-      title2: "Search",
+      icon: Briefcase,
+      title1: "My",
+      title2: "Trips",
       bgColor: "bg-red-50",
       iconColor: "text-red-400",
       gradientFrom: "from-white",
       gradientTo: "to-red-100",
       customIcon: true,
-      iconSrc: "/logos/Train_Search.png"
+      iconSrc: "/logos/My_Trips.png"
     },
     {
-      icon: Calendar,
-      title1: "Seat",
-      title2: "Availability",
+      icon: Coffee,
+      title1: "Order",
+      title2: "Food",
       bgColor: "bg-red-50",
       iconColor: "text-red-400",
       gradientFrom: "from-white",
       gradientTo: "to-red-100",
       customIcon: true,
-      iconSrc: "/logos/Seat_Availability.png"
+      iconSrc: "/logos/Order_Food.png"
     },
     {
-      icon: FileText,
-      title1: "PNR",
-      title2: "Status",
+      icon: null,
+      title1: "Rail",
+      title2: "Madad",
       bgColor: "bg-red-50",
-      iconColor: "text-red-400",
+      iconColor: "",
       gradientFrom: "from-white",
       gradientTo: "to-red-100",
       customIcon: true,
-      iconSrc: "/logos/PNR_Status.png"
+      iconSrc: "/logos/Rail_madad.png"
     }
   ];
 
   return (
     <div className="px-4 mb-8">
-      {/* Section header */}
-      <div className="text-center mb-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-2">Quick Services</h2>
-        <div className="w-16 h-1 bg-gradient-to-r from-red-500 to-red-600 mx-auto rounded-full"></div>
-      </div>
-      
       {/* Feature grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {features.map((feature, index) => (
@@ -96,6 +96,7 @@ const MainFeatures = () => {
             iconColor={feature.iconColor}
             gradientFrom={feature.gradientFrom}
             gradientTo={feature.gradientTo}
+            specialIcon={feature.specialIcon}
             customIcon={feature.customIcon}
             iconSrc={feature.iconSrc}
           />
@@ -105,4 +106,4 @@ const MainFeatures = () => {
   );
 };
 
-export default MainFeatures;
+export default AdditionalFeatures;

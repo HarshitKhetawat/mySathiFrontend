@@ -6,6 +6,8 @@ import WelcomeSection from './components/WelcomeSection';
 import QuickHelp from './components/QuickHelp';
 import MainFeatures from './components/MainFeatures.jsx';
 import SecondaryFeatures from './components/SecondaryFeatures.jsx';
+import AdditionalFeatures from './components/AdditionalFeatures.jsx';
+import Footer from './components/Footer.jsx';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -32,6 +34,12 @@ const App = () => {
         {/* Secondary Features Grid Component */}
         <SecondaryFeatures />
 
+        {/* Additional Features Grid Component */}
+        <AdditionalFeatures />
+
+        {/* Footer Component */}
+        <Footer />
+        
         {/* Placeholder for remaining components */}
         <div className="text-center text-gray-500 py-4">
           <p>More components coming in next steps...</p>
