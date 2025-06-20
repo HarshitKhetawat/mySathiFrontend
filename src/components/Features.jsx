@@ -89,34 +89,34 @@ const Features = () => {
 
   const primaryFeatures = [
     {
-      icon: Search, 
-      title1: "Smart Train", 
+      icon: Search,
+      title1: "Smart Train",
       title2: "Search",
       description: "Find the perfect train for your journey with our intelligent search engine. Get real-time availability and best route suggestions.",
-      gradientFrom: "from-red-500", 
-      gradientTo: "to-pink-600", 
+      gradientFrom: "from-red-500",
+      gradientTo: "to-pink-600",
       customIcon: true,
       iconSrc: "/logos/Train_Search.png",
       badge: "Most Popular"
     },
     {
-      icon: Activity, 
-      title1: "Live Train", 
+      icon: Activity,
+      title1: "Live Train",
       title2: "Tracking",
       description: "Track your train in real-time with precise location updates, delay notifications, and arrival predictions.",
-      gradientFrom: "from-red-500", 
-      gradientTo: "to-red-600", 
+      gradientFrom: "from-red-500",
+      gradientTo: "to-red-600",
       customIcon: true,
       iconSrc: "/logos/Running_Status.png",
       badge: "Real-time"
     },
     {
-      icon: FileText, 
-      title1: "Instant PNR", 
+      icon: FileText,
+      title1: "Instant PNR",
       title2: "Status",
       description: "Check your ticket status instantly with detailed journey information and seat confirmation updates.",
-      gradientFrom: "from-pink-500", 
-      gradientTo: "to-red-500", 
+      gradientFrom: "from-pink-500",
+      gradientTo: "to-red-500",
       customIcon: true,
       iconSrc: "/logos/PNR_Status.png"
     }
@@ -128,26 +128,27 @@ const Features = () => {
     { icon: Train, title1: "Coach", title2: "Layout", customIcon: true, iconSrc: "/logos/Coach_Layout.png" },
     { icon: Briefcase, title1: "My", title2: "Trips", customIcon: true, iconSrc: "/logos/My_Trips.png" },
     { icon: Coffee, title1: "Order", title2: "Food", customIcon: true, iconSrc: "/logos/Order_Food.png" },
-    { icon: null, title1: "Rail", title2: "Madad", customIcon: true, iconSrc: "/logos/Rail_madad.png" }
+    { icon: null, title1: "Rail", title2: "Madad", customIcon: true, iconSrc: "/logos/Rail_madad.png" },
+  
   ];
 
   return (
     <div className="py-24 bg-gradient-to-b from-gray-50 to-white px-4 sm:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
+        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 font-medium text-sm rounded-full mb-6">
             <Shield className="w-4 h-4" />
             Built for modern travelers
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Everything You Need for
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600">
               Seamless Train Travel
             </span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             From planning your journey to tracking your train in real-time, we've got every aspect of your travel covered with cutting-edge technology.
           </p>
@@ -160,63 +161,69 @@ const Features = () => {
           ))}
         </div>
 
-        {/* Value Proposition Section */}
+        {/* Value Propositions */}
         <div className="mb-16">
           <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-3xl p-8 border border-red-100">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center group">
-                <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-200 transition-colors duration-300">
-                  <Clock className="w-8 h-8 text-red-600" />
+              {[
+                { icon: Clock, title: "Save Time", desc: "Get all train information in one place. No more jumping between multiple apps and websites." },
+                { icon: Shield, title: "Stay Updated", desc: "Real-time notifications about delays, platform changes, and seat confirmations." },
+                { icon: Star, title: "Travel Smart", desc: "Make informed decisions with comprehensive route information and travel insights." }
+              ].map((item, i) => (
+                <div key={i} className="text-center group">
+                  <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-200 transition-colors duration-300">
+                    <item.icon className="w-8 h-8 text-red-600" />
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2">{item.title}</h4>
+                  <p className="text-gray-600 text-sm">{item.desc}</p>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">Save Time</h4>
-                <p className="text-gray-600 text-sm">Get all train information in one place. No more jumping between multiple apps and websites.</p>
-              </div>
-              
-              <div className="text-center group">
-                <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-200 transition-colors duration-300">
-                  <Shield className="w-8 h-8 text-red-600" />
-                </div>
-                <h4 className="font-bold text-gray-900 mb-2">Stay Updated</h4>
-                <p className="text-gray-600 text-sm">Real-time notifications about delays, platform changes, and seat confirmations.</p>
-              </div>
-              
-              <div className="text-center group">
-                <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-200 transition-colors duration-300">
-                  <Star className="w-8 h-8 text-red-600" />
-                </div>
-                <h4 className="font-bold text-gray-900 mb-2">Travel Smart</h4>
-                <p className="text-gray-600 text-sm">Make informed decisions with comprehensive route information and travel insights.</p>
-              </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Secondary Features */}
-        <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Additional Features</h3>
-          <p className="text-gray-600">Explore more tools to enhance your travel experience</p>
-        </div>
+        {/* Show All Features Button */}
+        {showAllFeatures && (
+  <>
+    <div className="text-center mb-8 mt-20">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">Additional Features</h3>
+      <p className="text-gray-600">Explore more tools to enhance your travel experience</p>
+    </div>
 
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 transition-all duration-500 ${showAllFeatures ? 'opacity-100' : 'opacity-70'}`}>
-          {secondaryFeatures.slice(0, showAllFeatures ? secondaryFeatures.length : 6).map((feature, idx) => (
-            <SecondaryFeatureCard key={idx} {...feature} />
-          ))}
-        </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 transition-all duration-500">
+      {secondaryFeatures.map((feature, idx) => (
+        <SecondaryFeatureCard key={idx} {...feature} />
+      ))}
+    </div>
 
+    {/* Show Less Button */}
+    <div className="text-center mt-8">
+      <button
+        onClick={() => setShowAllFeatures(false)}
+        className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-red-500 text-red-600 font-semibold rounded-full hover:bg-red-50 transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1"
+      >
+        <ChevronRight className="w-5 h-5 rotate-180" />
+        Show Less Features
+      </button>
+    </div>
+  </>
+)}
+
+        {/* Secondary Features (shown only if button clicked) */}
         {!showAllFeatures && (
-          <div className="text-center mt-8">
-            <button 
-              onClick={() => setShowAllFeatures(true)}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-pink-600 text-white font-semibold rounded-full hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              <Clock className="w-5 h-5" />
-              Show All Features
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        )}
+  <div className="text-center mt-8">
+    <button
+      onClick={() => setShowAllFeatures(true)}
+      className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-pink-600 text-white font-semibold rounded-full hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+    >
+      <Clock className="w-5 h-5" />
+      Show All Features
+      <ChevronRight className="w-5 h-5" />
+    </button>
+  </div>
+)}
 
-        {/* CTA Section */}
+        {/* CTA */}
         <div className="mt-20 text-center">
           <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-3xl p-12 text-white">
             <h3 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h3>
@@ -237,5 +244,4 @@ const Features = () => {
     </div>
   );
 };
-
 export default Features;

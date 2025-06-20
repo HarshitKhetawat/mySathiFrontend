@@ -70,7 +70,7 @@ const HeroSlideshow = () => {
         onClick={prev}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full text-black z-20"
       >
-        ←
+        <img src="/logos/chevron-left-solid.svg" alt="" />
       </button>
 
       {/* Right Arrow */}
