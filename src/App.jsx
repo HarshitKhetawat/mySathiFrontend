@@ -15,16 +15,11 @@ const App = () => {
       {/* Header Component */}
       <Header />
 
-      {/* Banner Component */}
-      <Banner />
-
       {/* Slideshow Component */}
       <Slideshow />
-      <br /><br />
+
       {/* Main Content Area */}
       <main className="p-4">
-        {/* Quick Help Component */}
-        <QuickHelp />
         {/* Main Features Component */}
         <Features />
         {/* Footer Component */}
