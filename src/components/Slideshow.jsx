@@ -37,7 +37,7 @@ const HeroSlideshow = () => {
         const next = (prev + 1) % slides.length;
         return next;
       });
-    }, current === 0 ? 10000 : 6000);
+    }, current === 0 ? 15000 : 6000);
     
     return () => clearInterval(timer);
   }, [current]);

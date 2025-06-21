@@ -65,7 +65,7 @@ const SecondaryFeatureCard = ({ icon: Icon, title1, title2, customIcon, iconSrc 
             <img 
               src={iconSrc} 
               alt={`${title1} ${title2}`} 
-              className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity"
+              className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity "
             />
           ) : (
             <Icon className="w-6 h-6 text-gray-600 group-hover:text-red-600 transition-colors" />
@@ -118,7 +118,8 @@ const Features = () => {
       gradientFrom: "from-pink-500",
       gradientTo: "to-red-500",
       customIcon: true,
-      iconSrc: "/logos/PNR_Status.png"
+      iconSrc: "/logos/PNR_Status.png",
+      badge: "Instant Updates"
     }
   ];
 
@@ -142,7 +143,7 @@ const Features = () => {
             Built for modern travelers
           </div>
 
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900  mb-6 leading-tight">
             Everything You Need for
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600">
               Seamless Train Travel
@@ -225,7 +226,7 @@ const Features = () => {
 
         {/* CTA */}
         <div className="mt-20 text-center">
-          <div className="bg-gradient-to-r from-red-600 to-red-500 rounded-3xl p-12 text-white">
+          <div className="bg-red-500 rounded-3xl p-12 text-white">
             <h3 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h3>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
               Join millions of travelers who trust us for their daily commute and long-distance journeys.

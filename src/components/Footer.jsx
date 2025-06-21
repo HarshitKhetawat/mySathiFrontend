@@ -72,10 +72,10 @@ const Footer = () => {
           {footerSections.map((section, index) => (
             <div key={section.title} className={`${index === 1 ? 'lg:col-span-2' : ''} group`}>
               <div className="flex items-center space-x-2 mb-6">
-                <h3 className="text-xl font-bold text-gray-800 group-hover:text-orange-500 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-gray-800 group-hover:text-red-500 transition-colors duration-300">
                   {section.title}
                 </h3>
-                <div className="w-8 h-0.5 bg-gradient-to-r from-orange-500 to-transparent group-hover:from-orange-300 transition-colors duration-300"></div>
+                <div className="w-8 h-0.5 bg-gradient-to-r from-red-500 to-transparent group-hover:from-orange-300 transition-colors duration-300"></div>
               </div>
               <ul className="space-y-4">
                 {section.links.map((link) => (
@@ -99,8 +99,8 @@ const Footer = () => {
           {/* Connect & Download Section */}
           <div className="lg:col-span-2 space-y-8">
             {/* Connect with Us */}
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-orange-300 transition-all duration-300 group">
-              <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-orange-500 transition-colors duration-300">
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-red-300 transition-all duration-300 group">
+              <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-red-500 transition-colors duration-300">
                 Connect with Us
               </h3>
               <div className="flex items-center space-x-3 mb-6 p-3 bg-gray-100 rounded-xl hover:bg-gray-200 transition-all duration-300 group/email">
@@ -111,7 +111,7 @@ const Footer = () => {
                   <p className="text-xs text-gray-500 uppercase tracking-wide">Email us</p>
                   <a
                     href="mailto:feedback@mysathi.com"
-                    className="text-gray-800 font-medium hover:text-orange-500 transition-colors duration-300"
+                    className="text-gray-800 font-medium hover:text-red-500 transition-colors duration-300"
                   >
                     feedback@mysathi.com
                   </a>
@@ -136,7 +136,7 @@ const Footer = () => {
             </div>
 
             {/* App Download */}
-            <div className="bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl p-6 border border-orange-200 hover:border-orange-300 transition-all duration-300">
+            <div className="bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl p-6 border border-gray-200 hover:border-red-300 transition-all duration-300">
               <h3 className="text-xl font-bold text-gray-800 mb-4">
                 Download Our App
               </h3>
@@ -144,7 +144,7 @@ const Footer = () => {
                 <div className="w-20 h-20 bg-white rounded-xl p-2 shadow-lg">
                   <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-8 h-8 bg-black rounded-sm mx-auto mb-1"></div>
+                      <div className="w-8 h-8 bg-white rounded-sm mx-auto mb-1"></div>
                       <span className="text-xs text-gray-600">QR Code</span>
                     </div>
                   </div>
@@ -159,7 +159,8 @@ const Footer = () => {
                   href="#"
                   className="flex items-center space-x-3 bg-black hover:bg-gray-800 text-white px-4 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group/app"
                 >
-                  <Apple className="w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" />
+                  {/* <Apple className="w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" /> */}
+                  <img src="/logos/appleWhte.png" alt="Apple Logo" className="text-white-500 w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" />
                   <div>
                     <div className="text-xs opacity-75">Download on the</div>
                     <div className="font-bold">App Store</div>
@@ -169,7 +170,8 @@ const Footer = () => {
                   href="#"
                   className="flex items-center space-x-3 bg-black hover:bg-gray-800 text-white px-4 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group/app"
                 >
-                  <Play className="w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" />
+                  {/* <Play className="w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" /> */}
+                  <img src="/logos/playstore.png" alt="Google Play Logo" className="text-white-500 w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" />
                   <div>
                     <div className="text-xs opacity-75">Get it on</div>
                     <div className="font-bold">Google Play</div>
@@ -199,9 +201,9 @@ const Footer = () => {
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-500">Powered by</span>
-              <div className="bg-gray-100 px-6 py-3 rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 group">
+              <div className="bg-gray-100 px-6 py-3 rounded-xl border border-gray-200 hover:border-red-300 transition-all duration-300 group">
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-blue-500 transition-all duration-300">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent group-hover:from-red-300 group-hover:to-red-500 transition-all duration-300">
                     MySathi
                   </span>
                   <div className="text-gray-500 group-hover:text-gray-800 transition-colors duration-300">

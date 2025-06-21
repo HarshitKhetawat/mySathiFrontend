@@ -85,10 +85,10 @@ const CoolieBookingSteps = () => {
       </div>
 
       {/* Desktop Layout */}
-      <div className="hidden lg:block max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-12">
+      <div className="hidden lg:block max-w-7xl mx-auto ">
+        <div className="flex items-center justify-between mb-12 ">
           {steps.map((step, index) => (
-            <div key={step.id} className="flex items-center">
+            <div key={step.id} className="flex items-center ">
               <div 
                 className={`relative cursor-pointer transition-all duration-300 ${
                   activeStep === index ? 'scale-110' : 'hover:scale-105'
@@ -124,7 +124,7 @@ const CoolieBookingSteps = () => {
         </div>
 
         {/* Step Details */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mt-16">
+        <div className="bg-white rounded-2xl shadow-xl p-8 mt-16 rounded-2xl p-6 border border-gray-200 hover:border-red-300 transition-all duration-300">
           <div className="flex items-center mb-6">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white mr-4">
               {steps[activeStep].icon}
@@ -172,7 +172,7 @@ const CoolieBookingSteps = () => {
               className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                 activeStep === 0 
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
+                  : 'bg-gradient-to-r from-red-500 to-red-700 text-white hover:from-red-600 hover:to-red-800 hover:shadow-lg'
               }`}
             >
               Previous Step
@@ -251,7 +251,7 @@ const CoolieBookingSteps = () => {
 
       {/* Bottom CTA */}
       <div className="mt-12 text-center max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-white rounded-2xl shadow-xl p-8 rounded-2xl p-6 border border-gray-200 hover:border-red-300 transition-all duration-300">
           <h3 className="text-2xl font-bold text-gray-800 mb-4">
             Ready to Book Your Coolie?
           </h3>
