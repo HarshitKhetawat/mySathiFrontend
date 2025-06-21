@@ -55,12 +55,12 @@ const Footer = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 mb-4">
-            <Sparkles className="w-6 h-6 text-orange-500 animate-pulse" />
-            <span className="text-orange-500 font-medium tracking-wider uppercase text-sm">Your Travel Companion</span>
-            <Sparkles className="w-6 h-6 text-orange-500 animate-pulse" />
+            <Sparkles className="w-6 h-6 text-red-500 animate-pulse" />
+            <span className="text-red-500 font-medium tracking-wider uppercase text-sm">Your Travel Companion</span>
+            <Sparkles className="w-6 h-6 text-red-500 animate-pulse" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-600 to-orange-400 bg-clip-text text-transparent mb-4">
-            MySathi
+            <span className='text-red-500'>M</span>ySa<span className='text-red-500'>T</span>hi
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Revolutionizing your railway journey with cutting-edge technology and seamless experiences

@@ -12,8 +12,9 @@ const Header = ({ activeTab = 'Home', onTabChange }) => {
       label: 'Bookings', 
       iconSrc: '/logos/Bookings.png',
       subItems: [
+        { id: 'coolie-booking', label: 'Coolie Booking' },
         { id: 'ticket-booking', label: 'Ticket Booking' },
-        { id: 'coolie-booking', label: 'Coolie Booking' }
+        
       ]
     },
     { id: 'PNR Status', label: 'PNR Status', iconSrc: '/logos/PNR_Status.png' },
@@ -25,7 +26,7 @@ const Header = ({ activeTab = 'Home', onTabChange }) => {
     { id: 'Help', label: 'Help', iconSrc: '/logos/Help.png' },
     { 
       id: 'Login', 
-      label: 'Login', 
+      label: '', 
       iconSrc: '/logos/login.png',
       subItems: [
         { id: 'login', label: 'Login' },

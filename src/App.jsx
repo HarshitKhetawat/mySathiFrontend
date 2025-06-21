@@ -1,11 +1,10 @@
 // App.jsx
 import React, { useState } from "react";
 import Header from "./components/Header";
-import Banner from "./components/Banner";
-import QuickHelp from "./components/QuickHelp";
 import Footer from "./components/Footer.jsx";
 import Features from "./components/Features.jsx";
 import Slideshow from "./components/Slideshow.jsx";
+import CoolieBookingSteps from "./components/CoolieBookingSteps.jsx";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
@@ -17,7 +16,8 @@ const App = () => {
 
       {/* Slideshow Component */}
       <Slideshow />
-
+      {/* Coolie Booking Steps Component */}
+      <CoolieBookingSteps />
       {/* Main Content Area */}
       <main className="p-4">
         {/* Main Features Component */}

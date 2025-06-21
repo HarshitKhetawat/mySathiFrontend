@@ -133,7 +133,7 @@ const Features = () => {
   ];
 
   return (
-    <div className="py-24 bg-gradient-to-b from-gray-50 to-white px-4 sm:px-8 lg:px-16">
+    <div className="py-24  px-4 sm:px-8 lg:px-16" style={{backgroundColor: '#FAFAFF'}} >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -163,7 +163,7 @@ const Features = () => {
 
         {/* Value Propositions */}
         <div className="mb-16">
-          <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-3xl p-8 border border-red-100">
+          <div className="bg-gradient-to-r from-red-50 to-red-50 rounded-3xl p-8 border border-red-100">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 { icon: Clock, title: "Save Time", desc: "Get all train information in one place. No more jumping between multiple apps and websites." },
@@ -214,7 +214,7 @@ const Features = () => {
   <div className="text-center mt-8">
     <button
       onClick={() => setShowAllFeatures(true)}
-      className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-pink-600 text-white font-semibold rounded-full hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+      className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold rounded-full hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
     >
       <Clock className="w-5 h-5" />
       Show All Features
@@ -225,7 +225,7 @@ const Features = () => {
 
         {/* CTA */}
         <div className="mt-20 text-center">
-          <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-3xl p-12 text-white">
+          <div className="bg-gradient-to-r from-red-600 to-red-500 rounded-3xl p-12 text-white">
             <h3 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h3>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
               Join millions of travelers who trust us for their daily commute and long-distance journeys.
