@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, X } from 'lucide-react';
 
 const Header = ({ activeTab = 'Home', onTabChange }) => {
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [hoverTimeout, setHoverTimeout] = useState(null);
+  const [megaMenuPosition, setMegaMenuPosition] = useState('center');
+  const megaMenuRef = useRef(null);
+  const moreButtonRef = useRef(null);
 
   const navItems = [
     { 
@@ -19,7 +22,38 @@ const Header = ({ activeTab = 'Home', onTabChange }) => {
     },
     { id: 'PNR Status', label: 'PNR Status', iconSrc: '/logos/PNR_Status.png' },
     { id: 'Train Status', label: 'Train Status', iconSrc: '/logos/Running_Status.png' },
-    { id: 'More', label: 'More', iconSrc: '/logos/More.png' },
+    { 
+      id: 'More', 
+      label: 'More', 
+      iconSrc: '/logos/More.png',
+      megaMenu: {
+        sections: [
+          {
+            title: 'More Features',
+            items: [
+              { id: 'e-wallet', label: 'E - Wallet' },
+              { id: 'fare-calculator', label: 'Fare Calculator' },
+              { id: 'check-speed', label: 'Check Speed' }
+            ]
+          },
+          {
+            title: 'OTHERS',
+            items: [
+              { id: 'about-us', label: 'About us' },
+              { id: 'user-guide', label: 'User Guide' },
+              { id: 'railway-helpline-number', label: 'Railway Helpline Number' },
+              { id: 'language', label: 'Language' },
+              { id: 'help-support', label: 'Help & Support' },
+              { id: 'alert', label: 'Alert' },
+              { id: 'refund-history', label: 'Refund History' },
+              { id: 'cancel-food-order', label: 'Cancel Food order' },
+              { id: 'rate-us', label: 'Rate us' },
+              { id: 'gallery', label: 'Gallery' }
+            ]
+          }
+        ]
+      }
+    },
   ];
 
   const additionalItems = [
@@ -34,6 +68,28 @@ const Header = ({ activeTab = 'Home', onTabChange }) => {
       ]
     },
   ];
+
+  // Calculate mega menu position to prevent overflow
+  useEffect(() => {
+    if (hoveredItem === 'More' && moreButtonRef.current) {
+      const buttonRect = moreButtonRef.current.getBoundingClientRect();
+      const windowWidth = window.innerWidth;
+      const megaMenuWidth = 800; // Fixed width of mega menu
+      
+      // Calculate if menu would overflow on the right
+      const spaceOnRight = windowWidth - buttonRect.right;
+      const spaceOnLeft = buttonRect.left;
+      
+      // If not enough space to center, adjust position
+      if (buttonRect.left + (megaMenuWidth / 2) > windowWidth - 20) {
+        setMegaMenuPosition('right');
+      } else if (buttonRect.left - (megaMenuWidth / 2) < 20) {
+        setMegaMenuPosition('left');
+      } else {
+        setMegaMenuPosition('center');
+      }
+    }
+  }, [hoveredItem]);
 
   const handleMobileNavClick = (itemId) => {
     onTabChange?.(itemId);
@@ -63,20 +119,36 @@ const Header = ({ activeTab = 'Home', onTabChange }) => {
     setHoverTimeout(timeout);
   };
 
+  const getMegaMenuClasses = () => {
+    const baseClasses = "absolute top-full mt-1 w-[800px] max-w-[95vw] bg-white rounded-xl shadow-2xl border border-gray-200 p-6 z-50 animate-in fade-in duration-200";
+    
+    switch (megaMenuPosition) {
+      case 'right':
+        return `${baseClasses} right-0`;
+      case 'left':
+        return `${baseClasses} left-0`;
+      default:
+        return `${baseClasses} left-1/2 transform -translate-x-1/2`;
+    }
+  };
+
   const renderNavButton = (item, isAdditional = false) => {
     const isActive = activeTab === item.id;
     const hasSubItems = item.subItems && item.subItems.length > 0;
+    const hasMegaMenu = item.megaMenu && item.megaMenu.sections;
     const isHovered = hoveredItem === item.id;
+    const isMoreButton = item.id === 'More';
 
     return (
       <div 
         key={item.id}
         className="relative"
-        onMouseEnter={() => hasSubItems && handleMouseEnter(item.id)}
-        onMouseLeave={() => hasSubItems && handleMouseLeave()}
+        ref={isMoreButton ? moreButtonRef : null}
+        onMouseEnter={() => (hasSubItems || hasMegaMenu) && handleMouseEnter(item.id)}
+        onMouseLeave={() => (hasSubItems || hasMegaMenu) && handleMouseLeave()}
       >
         <button
-          onClick={() => !hasSubItems && onTabChange?.(item.id)}
+          onClick={() => !(hasSubItems || hasMegaMenu) && onTabChange?.(item.id)}
           className={`group flex flex-col items-center p-3 rounded-2xl transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg border border-transparent ${
             isActive 
               ? 'bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200' 
@@ -111,8 +183,48 @@ const Header = ({ activeTab = 'Home', onTabChange }) => {
           </span>
         </button>
 
-        {/* Hover Dropdown */}
-        {hasSubItems && isHovered && (
+        {/* Mega Menu for More */}
+        {hasMegaMenu && isHovered && (
+          <div 
+            ref={megaMenuRef}
+            className={getMegaMenuClasses()}
+            onMouseEnter={() => handleMouseEnter(item.id)}
+            onMouseLeave={handleMouseLeave}
+          >
+            {/* Arrow pointer - adjust based on position */}
+            <div className={`absolute -top-2 w-4 h-4 bg-white border-l border-t border-gray-200 rotate-45 ${
+              megaMenuPosition === 'right' ? 'right-8' : 
+              megaMenuPosition === 'left' ? 'left-8' : 
+              'left-1/2 transform -translate-x-1/2'
+            }`}></div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {item.megaMenu.sections.map((section, sectionIndex) => (
+                <div key={sectionIndex} className="space-y-4">
+                  {section.title && (
+                    <h3 className="text-lg font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+                      {section.title}
+                    </h3>
+                  )}
+                  <div className="space-y-2">
+                    {section.items.map((subItem) => (
+                      <button
+                        key={subItem.id}
+                        onClick={() => handleSubItemClick(subItem.id)}
+                        className="w-full text-left px-3 py-2.5 text-sm font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-200"
+                      >
+                        {subItem.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Regular Hover Dropdown for other items */}
+        {hasSubItems && isHovered && !hasMegaMenu && (
           <div 
             className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50 animate-in fade-in duration-200"
             onMouseEnter={() => handleMouseEnter(item.id)}
@@ -232,6 +344,32 @@ const Header = ({ activeTab = 'Home', onTabChange }) => {
                           >
                             {subItem.label}
                           </button>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Mobile Mega Menu */}
+                    {item.megaMenu && (
+                      <div className="ml-12 mt-2 space-y-3">
+                        {item.megaMenu.sections.map((section, sectionIndex) => (
+                          <div key={sectionIndex}>
+                            {section.title && (
+                              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-3 py-2">
+                                {section.title}
+                              </div>
+                            )}
+                            <div className="space-y-1">
+                              {section.items.map((subItem) => (
+                                <button
+                                  key={subItem.id}
+                                  onClick={() => handleMobileNavClick(subItem.id)}
+                                  className="w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-200"
+                                >
+                                  {subItem.label}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     )}

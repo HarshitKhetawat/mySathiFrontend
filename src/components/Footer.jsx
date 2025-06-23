@@ -188,7 +188,7 @@ const Footer = () => {
             <div className="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8">
               <div className="flex items-center space-x-3">
                 <div>
-                  <img src="/logos/mysathi_logo_white.png" alt="" className="h-12 w-20 rounded-xl" />
+                  <img src="/logos/logo.png" alt="" className="h-12 w-20 rounded-xl" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-gray-800">MySathi</div>
