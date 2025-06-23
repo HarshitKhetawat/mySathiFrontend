@@ -295,7 +295,7 @@ const HeroSlideshow = () => {
   return (
     <div className="relative w-full">
       {/* Slideshow Container */}
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="relative w-full h-180 overflow-hidden">
         {/* Slideshow */}
         {slides.map((slide, index) => (
           <div
