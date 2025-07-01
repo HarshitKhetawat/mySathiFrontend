@@ -1,12 +1,13 @@
 import React from "react";
 
-const MobileDropdown = ({ 
-  isOpen, 
-  activeTab, 
-  navItems, 
-  additionalItems, 
-  onNavClick, 
-  onClose 
+const MobileDropdown = ({
+  isOpen,
+  activeTab,
+  navItems,
+  additionalItems,
+  onNavClick,
+  onClose,
+  onLoginClick,
 }) => {
   if (!isOpen) return null;
 
@@ -149,6 +150,17 @@ const MobileDropdown = ({
           </div>
         </div>
 
+        {/* Login Button */}
+        <div className="px-4 pb-4">
+          <button
+            onClick={onLoginClick}
+            className="w-full flex items-center justify-center px-4 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold shadow hover:from-orange-600 hover:to-red-600 transition-all duration-200 mt-2"
+          >
+            <img src="/logos/login.png" alt="Login" className="w-5 h-5 mr-2" />
+            Login
+          </button>
+        </div>
+
         {/* Footer */}
         <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
           <p className="text-xs text-center text-gray-500">
@@ -158,10 +170,7 @@ const MobileDropdown = ({
       </div>
 
       {/* Backdrop to close dropdown when clicking outside */}
-      <div
-        className="md:hidden fixed inset-0 z-40"
-        onClick={onClose}
-      />
+      <div className="md:hidden fixed inset-0 z-40" onClick={onClose} />
     </>
   );
 };

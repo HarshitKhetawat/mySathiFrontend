@@ -3,6 +3,7 @@ import { ChevronDown, X } from "lucide-react";
 import NavButton from "./NavButton";
 import MobileDropdown from "./MobileDropdown";
 import { navItems, additionalItems } from "./navData";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ activeTab = "Home", onTabChange }) => {
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
@@ -10,6 +11,7 @@ const Header = ({ activeTab = "Home", onTabChange }) => {
   const [hoverTimeout, setHoverTimeout] = useState(null);
   const [megaMenuPosition, setMegaMenuPosition] = useState("center");
   const moreButtonRef = useRef(null);
+  const navigate = useNavigate();
 
   // Calculate mega menu position to prevent overflow
   useEffect(() => {
@@ -84,11 +86,18 @@ const Header = ({ activeTab = "Home", onTabChange }) => {
               className="w-12 h-12 group-hover:scale-110 transition-transform duration-200"
             />
           </button>
-          <img
-            src="/logos/mysathi_logo_white.png"
-            alt="MySathi Logo"
-            className="w-24 h-auto hover:scale-105 transition-transform duration-200"
-          />
+          <button
+            onClick={() => navigate("/")}
+            className="focus:outline-none"
+            aria-label="Go to Home"
+            style={{ background: "none", border: "none", padding: 0 }}
+          >
+            <img
+              src="/logos/mysathi_logo_white.png"
+              alt="MySathi Logo"
+              className="w-24 h-auto hover:scale-105 transition-transform duration-200"
+            />
+          </button>
         </div>
 
         {/* Right - Nav & Login (Desktop only) */}
@@ -107,20 +116,31 @@ const Header = ({ activeTab = "Home", onTabChange }) => {
               onSubItemClick={handleSubItemClick}
             />
           ))}
-          {additionalItems.map((item) => (
-            <NavButton
-              key={item.id}
-              item={item}
-              isAdditional={true}
-              activeTab={activeTab}
-              hoveredItem={hoveredItem}
-              megaMenuPosition={megaMenuPosition}
-              onTabChange={onTabChange}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onSubItemClick={handleSubItemClick}
-            />
-          ))}
+          {additionalItems.map((item) =>
+            item.id === "Login" ? (
+              <button
+                key={item.id}
+                onClick={() => navigate("/login")}
+                className="flex items-center px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold shadow hover:from-orange-600 hover:to-red-600 transition-all duration-200"
+              >
+                <img src={item.iconSrc} alt="Login" className="w-5 h-5 mr-2" />
+                Login
+              </button>
+            ) : (
+              <NavButton
+                key={item.id}
+                item={item}
+                isAdditional={true}
+                activeTab={activeTab}
+                hoveredItem={hoveredItem}
+                megaMenuPosition={megaMenuPosition}
+                onTabChange={onTabChange}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onSubItemClick={handleSubItemClick}
+              />
+            )
+          )}
         </div>
 
         {/* Mobile - Dropdown Toggle */}
@@ -148,6 +168,7 @@ const Header = ({ activeTab = "Home", onTabChange }) => {
         additionalItems={additionalItems}
         onNavClick={handleMobileNavClick}
         onClose={() => setIsMobileDropdownOpen(false)}
+        onLoginClick={() => navigate("/login")}
       />
     </header>
   );

@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+/* Custom scrollbar hiding for better mobile experience */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Responsive form improvements */
+@media (max-width: 640px) {
+  .booking-form-mobile {
+    margin: 0 1rem;
+  }
+}
+
+/* Smooth transitions for responsive elements */
+.responsive-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

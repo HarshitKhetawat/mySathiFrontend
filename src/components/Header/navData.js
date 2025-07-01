@@ -70,9 +70,6 @@ export const additionalItems = [
     id: "Login",
     label: "",
     iconSrc: "/logos/login.png",
-    subItems: [
-      { id: "login", label: "Login" },
-      { id: "register", label: "Register" },
-    ],
+    subItems: [{ id: "login", label: "Login" }],
   },
 ];
