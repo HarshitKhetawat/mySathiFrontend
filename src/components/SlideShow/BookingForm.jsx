@@ -1,50 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ArrowLeftRight, Search, Calendar, MapPin, Users, Clock, Train, CheckCircle, AlertCircle } from "lucide-react";
 
-const slides = [
-  {
-    image: "/images/CoolieBanner.png",
-    title: "Premium Coolie Services",
-    description: "Book reliable railway porters for hassle-free boarding and luggage assistance.",
-    icon: <Users className="w-8 h-8" />,
-    color: "from-blue-600 to-purple-600"
-  },
-  {
-    image: "/images/slide1.jpg",
-    title: "PNR Status & Prediction",
-    description: "Real-time ticket confirmation status with AI-powered prediction accuracy.",
-    icon: <CheckCircle className="w-8 h-8" />,
-    color: "from-green-600 to-emerald-600"
-  },
-  {
-    image: "/images/slide2.jpg",
-    title: "Live Train Tracking",
-    description: "Track your train's real-time location, delays, and platform information.",
-    icon: <Train className="w-8 h-8" />,
-    color: "from-orange-600 to-red-600"
-  },
-];
-
-const HeroSlideshow = () => {
-  const [current, setCurrent] = useState(0);
+const BookingForm = ({ isMobile }) => {
   const [activeTab, setActiveTab] = useState('coolie');
   const [fromStation, setFromStation] = useState('');
   const [toStation, setToStation] = useState('');
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => {
-        const next = (prev + 1) % slides.length;
-        return next;
-      });
-    }, current === 0 ? 15000 : 6000);
-    
-    return () => clearInterval(timer);
-  }, [current]);
-
-  const prev = () =>
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  const next = () => setCurrent((prev) => (prev + 1) % slides.length);
 
   const swapStations = () => {
     const temp = fromStation;
@@ -52,7 +12,7 @@ const HeroSlideshow = () => {
     setToStation(temp);
   };
 
-  const BookingForm = ({ isMobile }) => (
+  return (
     <div className={`${isMobile 
       ? 'bg-white shadow-xl rounded-2xl border border-gray-200 mx-4' 
       : 'bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20'
@@ -69,13 +29,13 @@ const HeroSlideshow = () => {
             onClick={() => setActiveTab('coolie')}
             className={`flex-1 px-3 py-2 text-sm font-semibold rounded-xl transition-all duration-300 ${
               activeTab === 'coolie'
-                ? `${isMobile ? 'bg-purple-500 text-white' : 'bg-white text-purple-600'} shadow-md`
+                ? `${isMobile ? 'bg-purple-500 text-white' : 'bg-white text-orange-600'} shadow-md`
                 : 'text-gray-600 hover:text-gray-800 hover:bg-white/50'
             }`}
           >
             <div className="flex items-center justify-center gap-2">
               <Users className="w-4 h-4" />
-              <span>Coolie</span>
+              <span className="text-xl">Coolie</span>
             </div>
           </button>
           <button
@@ -88,33 +48,33 @@ const HeroSlideshow = () => {
           >
             <div className="flex items-center justify-center gap-2">
               <Search className="w-4 h-4" />
-              <span>Book</span>
+              <span className="text-xl">Book</span>
             </div>
           </button>
           <button
             onClick={() => setActiveTab('pnr')}
             className={`flex-1 px-3 py-2 text-sm font-semibold rounded-xl transition-all duration-300 ${
               activeTab === 'pnr'
-                ? `${isMobile ? 'bg-green-500 text-white' : 'bg-white text-green-600'} shadow-md`
+                ? `${isMobile ? 'bg-green-500 text-white' : 'bg-white text-orange-600'} shadow-md`
                 : 'text-gray-600 hover:text-gray-800 hover:bg-white/50'
             }`}
           >
             <div className="flex items-center justify-center gap-2">
               <CheckCircle className="w-4 h-4" />
-              <span>PNR</span>
+              <span className="text-xl">PNR</span>
             </div>
           </button>
           <button
             onClick={() => setActiveTab('running')}
             className={`flex-1 px-3 py-2 text-sm font-semibold rounded-xl transition-all duration-300 ${
               activeTab === 'running'
-                ? `${isMobile ? 'bg-blue-500 text-white' : 'bg-white text-blue-600'} shadow-md`
+                ? `${isMobile ? 'bg-blue-500 text-white' : 'bg-white text-orange-600'} shadow-md`
                 : 'text-gray-600 hover:text-gray-800 hover:bg-white/50'
             }`}
           >
             <div className="flex items-center justify-center gap-2">
               <Train className="w-4 h-4" />
-              <span>Track</span>
+              <span className="text-xl">Track</span>
             </div>
           </button>
         </div>
@@ -124,7 +84,7 @@ const HeroSlideshow = () => {
           {activeTab === 'coolie' && (
             <div className={`${isMobile ? 'space-y-4' : 'flex items-end gap-3'}`}>
               <div className={`${isMobile ? 'w-full' : 'flex-1'}`}>
-                <label className="block text-xs font-medium text-gray-700 mb-1">PNR Number</label>
+                <label className="block text-l font-medium text-gray-700 mb-1">PNR Number</label>
                 <div className="relative">
                   <CheckCircle className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -134,9 +94,9 @@ const HeroSlideshow = () => {
                   />
                 </div>
               </div>
-              
+                
               <div className={`${isMobile ? 'w-full mt-4' : 'flex-shrink-0'}`}>
-                <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2.5 text-sm rounded-xl font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2.5 text-sm rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
                   Search PNR for Coolie Booking
                 </button>
               </div>
@@ -146,7 +106,7 @@ const HeroSlideshow = () => {
           {activeTab === 'book' && (
             <div className={`${isMobile ? 'space-y-4' : 'flex items-end gap-3'}`}>
               <div className={`${isMobile ? 'w-full' : 'flex-1'}`}>
-                <label className="block text-xs font-medium text-gray-700 mb-1">From Station</label>
+                <label className="block text-l font-medium text-gray-700 mb-1">From Station</label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -171,7 +131,7 @@ const HeroSlideshow = () => {
               )}
               
               <div className={`${isMobile ? 'w-full' : 'flex-1'}`}>
-                <label className="block text-xs font-medium text-gray-700 mb-1">To Station</label>
+                <label className="block text-l font-medium text-gray-700 mb-1">To Station</label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -196,7 +156,7 @@ const HeroSlideshow = () => {
               )}
 
               <div className={`${isMobile ? 'w-full' : 'flex-1'}`}>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Journey Date</label>
+                <label className="block text-l font-medium text-gray-700 mb-1">Journey Date</label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -217,7 +177,7 @@ const HeroSlideshow = () => {
           {activeTab === 'pnr' && (
             <div className={`${isMobile ? 'space-y-4' : 'flex items-end gap-3'}`}>
               <div className={`${isMobile ? 'w-full' : 'flex-1'}`}>
-                <label className="block text-xs font-medium text-gray-700 mb-1">PNR Number</label>
+                <label className="block text-l font-medium text-gray-700 mb-1">PNR Number</label>
                 <div className="relative">
                   <CheckCircle className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -228,7 +188,7 @@ const HeroSlideshow = () => {
                 </div>
               </div>
               <div className={`${isMobile ? 'w-full mt-4' : 'flex-shrink-0'}`}>
-                <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-2.5 text-sm rounded-xl font-semibold hover:from-green-600 hover:to-emerald-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2.5 text-l rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
                   Check Status
                 </button>
               </div>
@@ -254,7 +214,7 @@ const HeroSlideshow = () => {
           {activeTab === 'running' && (
             <div className={`${isMobile ? 'space-y-4' : 'flex items-end gap-3'}`}>
               <div className={`${isMobile ? 'w-full' : 'flex-1'}`}>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Train Details</label>
+                <label className="block text-l font-medium text-gray-700 mb-1">Train Details</label>
                 <div className="relative">
                   <Train className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -265,7 +225,7 @@ const HeroSlideshow = () => {
                 </div>
               </div>
               <div className={`${isMobile ? 'w-full mt-4' : 'flex-shrink-0'}`}>
-                <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2.5 text-sm rounded-xl font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2.5 text-sm rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
                   Track Live
                 </button>
               </div>
@@ -291,90 +251,6 @@ const HeroSlideshow = () => {
       </div>
     </div>
   );
-
-  return (
-    <div className="relative w-full">
-      {/* Slideshow Container */}
-      <div className="relative w-full h-180 overflow-hidden">
-        {/* Slideshow */}
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-all duration-1000 ${
-              index === current ? "opacity-100 scale-100" : "opacity-0 scale-105"
-            }`}
-          >
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-black/40" />
-          </div>
-        ))}
-
-        {/* Navigation */}
-        <button
-          onClick={prev}
-          className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md hover:bg-white/20 p-2 md:p-4 rounded-full text-white z-30 transition-all duration-300 border border-white/20"
-        >
-          <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button
-          onClick={next}
-          className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md hover:bg-white/20 p-2 md:p-4 rounded-full text-white z-30 transition-all duration-300 border border-white/20"
-        >
-          <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        {/* Slide Indicators */}
-        <div className="absolute bottom-8 md:bottom-24 left-1/2 -translate-x-1/2 flex space-x-3 z-30">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrent(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === current ? "bg-white scale-125" : "bg-white/50 hover:bg-white/75"
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-white z-20 px-4">
-          <div className="text-center mb-8 transform transition-all duration-700">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 md:p-4 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                {slides[current].icon}
-              </div>
-            </div>
-            <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-white/80 bg-clip-text">
-              {slides[current].title}
-            </h1>
-            <p className="text-sm md:text-lg lg:text-xl text-white/90 max-w-3xl leading-relaxed px-4">
-              {slides[current].description}
-            </p>
-          </div>
-        </div>
-
-        {/* Desktop Booking Form (overlaid on slideshow) */}
-        <div className="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 max-w-6xl z-30">
-          <div className="relative">
-            <BookingForm isMobile={false} />
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Booking Form (below slideshow with proper spacing) */}
-      <div className="md:hidden relative mt-6 mb-6">
-        <BookingForm isMobile={true} />
-      </div>
-    </div>
-  );
 };
 
-export default HeroSlideshow;
+export default BookingForm;

@@ -1,48 +1,97 @@
-import React from 'react';
+import React from "react";
 import {
-  Facebook, Twitter, Linkedin, Youtube, Instagram,
-  Apple, Play, Mail, ArrowUpRight, Sparkles
-} from 'lucide-react';
+  Facebook,
+  Twitter,
+  Linkedin,
+  Youtube,
+  Instagram,
+  Apple,
+  Play,
+  Mail,
+  ArrowUpRight,
+  Sparkles,
+} from "lucide-react";
 
 const Footer = () => {
   const footerSections = [
     {
-      title: 'Company',
+      title: "Company",
       links: [
-        { name: 'About Us', href: '#', description: 'Our story & mission' },
-        { name: 'Blogs', href: '#', description: 'Latest insights' },
-        { name: 'Sitemap', href: '#', description: 'Navigate easily' }
-      ]
+        { name: "About Us", href: "#", description: "Our story & mission" },
+        { name: "Blogs", href: "#", description: "Latest insights" },
+        { name: "Sitemap", href: "#", description: "Navigate easily" },
+      ],
     },
     {
-      title: 'Services',
+      title: "Services",
       links: [
-        { name: 'PNR Status', href: '#', description: 'Track your journey' },
-        { name: 'Coach Position', href: '#', description: 'Find your coach' },
-        { name: 'Running Status', href: '#', description: 'Live train updates' },
-        { name: 'Seat Availability', href: '#', description: 'Check availability' },
-        { name: 'Time Table', href: '#', description: 'Train schedules' },
-        { name: 'Fare Calculator', href: '#', description: 'Calculate costs' },
-        { name: 'Station Details', href: '#', description: 'Station information' }
-      ]
+        { name: "PNR Status", href: "#", description: "Track your journey" },
+        { name: "Coach Position", href: "#", description: "Find your coach" },
+        {
+          name: "Running Status",
+          href: "#",
+          description: "Live train updates",
+        },
+        {
+          name: "Seat Availability",
+          href: "#",
+          description: "Check availability",
+        },
+        { name: "Time Table", href: "#", description: "Train schedules" },
+        { name: "Fare Calculator", href: "#", description: "Calculate costs" },
+        {
+          name: "Station Details",
+          href: "#",
+          description: "Station information",
+        },
+      ],
     },
     {
-      title: 'Support',
+      title: "Support",
       links: [
-        { name: 'Chat Support', href: '#', description: '24/7 assistance' },
-        { name: 'FAQ', href: '#', description: 'Quick answers' },
-        { name: 'Terms & Conditions', href: '#', description: 'Legal information' },
-        { name: 'Privacy Policy', href: '#', description: 'Data protection' }
-      ]
-    }
+        { name: "Chat Support", href: "#", description: "24/7 assistance" },
+        { name: "FAQ", href: "#", description: "Quick answers" },
+        {
+          name: "Terms & Conditions",
+          href: "#",
+          description: "Legal information",
+        },
+        { name: "Privacy Policy", href: "#", description: "Data protection" },
+      ],
+    },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook', color: 'hover:bg-blue-100 hover:text-blue-600' },
-    { icon: Twitter, href: '#', label: 'Twitter', color: 'hover:bg-sky-100 hover:text-sky-600' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn', color: 'hover:bg-blue-100 hover:text-blue-700' },
-    { icon: Youtube, href: '#', label: 'YouTube', color: 'hover:bg-red-100 hover:text-red-600' },
-    { icon: Instagram, href: '#', label: 'Instagram', color: 'hover:bg-pink-100 hover:text-pink-600' }
+    {
+      icon: Facebook,
+      href: "#",
+      label: "Facebook",
+      color: "hover:bg-blue-100 hover:text-blue-600",
+    },
+    {
+      icon: Twitter,
+      href: "#",
+      label: "Twitter",
+      color: "hover:bg-sky-100 hover:text-sky-600",
+    },
+    {
+      icon: Linkedin,
+      href: "#",
+      label: "LinkedIn",
+      color: "hover:bg-blue-100 hover:text-blue-700",
+    },
+    {
+      icon: Youtube,
+      href: "#",
+      label: "YouTube",
+      color: "hover:bg-red-100 hover:text-red-600",
+    },
+    {
+      icon: Instagram,
+      href: "#",
+      label: "Instagram",
+      color: "hover:bg-pink-100 hover:text-pink-600",
+    },
   ];
 
   return (
@@ -56,21 +105,28 @@ const Footer = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 mb-4">
             <Sparkles className="w-6 h-6 text-red-500 animate-pulse" />
-            <span className="text-red-500 font-medium tracking-wider uppercase text-sm">Your Travel Companion</span>
+            <span className="text-red-500 font-medium tracking-wider uppercase text-sm">
+              Your Travel Companion
+            </span>
             <Sparkles className="w-6 h-6 text-red-500 animate-pulse" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-600 to-orange-400 bg-clip-text text-transparent mb-4">
-            <span className='text-red-500'>M</span>ySa<span className='text-red-500'>T</span>hi
+            <span className="text-red-500">M</span>ySa
+            <span className="text-red-500">T</span>hi
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Revolutionizing your railway journey with cutting-edge technology and seamless experiences
+            Revolutionizing your railway journey with cutting-edge technology
+            and seamless experiences
           </p>
         </div>
 
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
           {footerSections.map((section, index) => (
-            <div key={section.title} className={`${index === 1 ? 'lg:col-span-2' : ''} group`}>
+            <div
+              key={section.title}
+              className={`${index === 1 ? "lg:col-span-2" : ""} group`}
+            >
               <div className="flex items-center space-x-2 mb-6">
                 <h3 className="text-xl font-bold text-gray-800 group-hover:text-red-500 transition-colors duration-300">
                   {section.title}
@@ -108,7 +164,9 @@ const Footer = () => {
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Email us</p>
+                  <p className="text-xs text-gray-500 uppercase tracking-wide">
+                    Email us
+                  </p>
                   <a
                     href="mailto:feedback@mysathi.com"
                     className="text-gray-800 font-medium hover:text-red-500 transition-colors duration-300"
@@ -150,8 +208,12 @@ const Footer = () => {
                   </div>
                 </div>
                 <div>
-                  <p className="text-gray-800 font-medium mb-1">Scan & Download</p>
-                  <p className="text-sm text-gray-600">Get instant access to all features</p>
+                  <p className="text-gray-800 font-medium mb-1">
+                    Scan & Download
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Get instant access to all features
+                  </p>
                 </div>
               </div>
               <div className="space-y-3">
@@ -160,7 +222,11 @@ const Footer = () => {
                   className="flex items-center space-x-3 bg-black hover:bg-gray-800 text-white px-4 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group/app"
                 >
                   {/* <Apple className="w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" /> */}
-                  <img src="/logos/appleWhte.png" alt="Apple Logo" className="text-white-500 w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" />
+                  <img
+                    src="/logos/appleWhte.png"
+                    alt="Apple Logo"
+                    className="text-white-500 w-8 h-8 group-hover/app:scale-110 transition-transform duration-300"
+                  />
                   <div>
                     <div className="text-xs opacity-75">Download on the</div>
                     <div className="font-bold">App Store</div>
@@ -171,7 +237,11 @@ const Footer = () => {
                   className="flex items-center space-x-3 bg-black hover:bg-gray-800 text-white px-4 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group/app"
                 >
                   {/* <Play className="w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" /> */}
-                  <img src="/logos/playstore.png" alt="Google Play Logo" className="text-white-500 w-8 h-8 group-hover/app:scale-110 transition-transform duration-300" />
+                  <img
+                    src="/logos/playstore.png"
+                    alt="Google Play Logo"
+                    className="text-white-500 w-8 h-8 group-hover/app:scale-110 transition-transform duration-300"
+                  />
                   <div>
                     <div className="text-xs opacity-75">Get it on</div>
                     <div className="font-bold">Google Play</div>
@@ -188,11 +258,19 @@ const Footer = () => {
             <div className="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8">
               <div className="flex items-center space-x-3">
                 <div>
-                  <img src="/logos/logo.png" alt="" className="h-12 w-20 rounded-xl" />
+                  <img
+                    src="/logos/logo.png"
+                    alt=""
+                    className="h-12 w-20 rounded-xl"
+                  />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gray-800">MySathi</div>
-                  <div className="text-xs text-gray-500">Your Travel Companion</div>
+                  <div className="text-2xl font-bold text-gray-800">
+                    MySathi
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    Your Travel Companion
+                  </div>
                 </div>
               </div>
               <div className="text-sm text-gray-500">
